@@ -23,6 +23,7 @@ import javax.inject.Singleton;
 
 import org.jclouds.ec2.EC2Api;
 import org.jclouds.ec2.domain.InstanceState;
+import org.jclouds.ec2.domain.Reservation;
 import org.jclouds.ec2.domain.RunningInstance;
 import org.jclouds.logging.Logger;
 
@@ -31,36 +32,36 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 /**
- * 
  * Tests to see if a task succeeds.
  */
 @Singleton
 public class InstanceStateTerminated implements Predicate<RunningInstance> {
 
-   private final EC2Api client;
+    private final EC2Api client;
 
-   @Resource
-   protected Logger logger = Logger.NULL;
+    @Resource
+    protected Logger logger = Logger.NULL;
 
-   @Inject
-   public InstanceStateTerminated(EC2Api client) {
-      this.client = client;
-   }
+    @Inject
+    public InstanceStateTerminated(EC2Api client) {
+        this.client = client;
+    }
 
-   public boolean apply(RunningInstance instance) {
-      logger.trace("looking for state on instance %s", instance);
-      try {
-         instance = refresh(instance);
-      } catch (NoSuchElementException e) {
-         return true;
-      }
-      logger.trace("%s: looking for instance state %s: currently: %s", instance.getId(),
-               InstanceState.TERMINATED, instance.getInstanceState());
-      return instance.getInstanceState() == InstanceState.TERMINATED;
-   }
+    public boolean apply(RunningInstance instance) {
+        logger.trace("looking for state on instance %s", instance);
+        try {
+            instance = refresh(instance);
+        } catch (NoSuchElementException e) {
+            return true;
+        }
+        logger.trace("%s: looking for instance state %s: currently: %s", instance.getId(),
+                InstanceState.TERMINATED, instance.getInstanceState());
+        return instance.getInstanceState() == InstanceState.TERMINATED;
+    }
 
-   private RunningInstance refresh(RunningInstance instance) {
-      return Iterables.getOnlyElement(Iterables.getOnlyElement(client.getInstanceApi().get()
-               .describeInstancesInRegion(instance.getRegion(), instance.getId())));
-   }
+    private RunningInstance refresh(RunningInstance instance) {
+        return Iterables.getOnlyElement((Reservation<? extends RunningInstance>)
+                Iterables.getOnlyElement(client.getInstanceApi().get()
+                        .describeInstancesInRegion(instance.getRegion(), instance.getId())));
+    }
 }

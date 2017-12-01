@@ -24,11 +24,12 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.rackspace.cloudloadbalancers.v1.domain.internal.BaseLoadBalancer;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableSet;
 
 public class LoadBalancer extends BaseLoadBalancer<Node, LoadBalancer> {
@@ -170,7 +171,7 @@ public class LoadBalancer extends BaseLoadBalancer<Node, LoadBalancer> {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this).omitNullValues().add("id", id).add("region", region).add("status", status)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("id", id).add("region", region).add("status", status)
             .add("name", name).add("protocol", protocol).add("port", port).add("nodeCount", getNodeCount())
             .add("nodes", nodes).add("timeout", timeout).add("algorithm", algorithm).add("halfClosed", halfClosed)
             .add("clusterName", clusterName).add("created", created).add("updated", updated)
@@ -213,7 +214,7 @@ public class LoadBalancer extends BaseLoadBalancer<Node, LoadBalancer> {
     * balancers in a SUSPENDED status are configured to reject traffic and will not forward requests
     * to back-end nodes.
     */
-   public static enum Status {
+   public enum Status {
       /**
        * Load balancer is being provisioned for the first time and configuration is being applied to
        * bring the service online. The service will not yet be ready to serve incoming requests.

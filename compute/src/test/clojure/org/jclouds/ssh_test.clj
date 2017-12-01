@@ -65,7 +65,7 @@
   (^void put [this ^String path ^String content])
   (^void put [this ^String path ^org.jclouds.io.Payload content])
   (getUsername [this] username)
-  (getHostAddress [this] (.getHostText socket)) )
+  (getHostAddress [this] (.getHost socket)) )
 
 (defn no-op-ssh-client
   [socket username password]

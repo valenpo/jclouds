@@ -141,7 +141,7 @@ public final class AWSEC2ImageSupplier implements Supplier<Set<? extends Image>>
       }
    }
 
-   public static enum QueryStringToMultimap implements Function<String, Multimap<String, String>> {
+   public enum QueryStringToMultimap implements Function<String, Multimap<String, String>> {
       INSTANCE;
       @Override
       public Multimap<String, String> apply(String arg0) {

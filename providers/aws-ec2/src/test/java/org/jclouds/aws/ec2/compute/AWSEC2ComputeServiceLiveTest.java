@@ -48,6 +48,8 @@ import org.jclouds.compute.predicates.NodePredicates;
 import org.jclouds.domain.LoginCredentials;
 import org.jclouds.ec2.compute.EC2ComputeServiceLiveTest;
 import org.jclouds.ec2.domain.KeyPair;
+import org.jclouds.ec2.domain.Reservation;
+import org.jclouds.ec2.domain.RunningInstance;
 import org.jclouds.ec2.features.InstanceApi;
 import org.jclouds.ec2.features.KeyPairApi;
 import org.jclouds.net.domain.IpProtocol;
@@ -131,7 +133,8 @@ public class AWSEC2ComputeServiceLiveTest extends EC2ComputeServiceLiveTest {
 
          startedId = first.getProviderId();
 
-         AWSRunningInstance instance = AWSRunningInstance.class.cast(getOnlyElement(getOnlyElement(instanceApi
+         AWSRunningInstance instance = AWSRunningInstance.class.cast(getOnlyElement(
+                 (Reservation<? extends RunningInstance >) getOnlyElement(instanceApi
                   .describeInstancesInRegion(region, startedId))));
 
          assertEquals(instance.getKeyName(), group);

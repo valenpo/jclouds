@@ -31,7 +31,7 @@ import org.jclouds.openstack.v2_0.domain.Link;
 import org.jclouds.openstack.v2_0.domain.Resource;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableMap;
 
 /**
@@ -51,7 +51,7 @@ public class Image extends Resource {
     * RAM requirements needed to create a server with the image.
     * 
     */
-   public static enum Status {
+   public enum Status {
       
       UNRECOGNIZED, UNKNOWN, ACTIVE, SAVING, ERROR, DELETED;
       

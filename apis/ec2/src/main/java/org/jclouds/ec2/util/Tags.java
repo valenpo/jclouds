@@ -43,7 +43,7 @@ public class Tags {
             });
    }
 
-   public static enum ValueFunction implements Function<Tag, String> {
+   public enum ValueFunction implements Function<Tag, String> {
       INSTANCE;
       @Override
       public String apply(Tag in) {
@@ -60,7 +60,7 @@ public class Tags {
       return ValueFunction.INSTANCE;
    }
 
-   public static enum KeyFunction implements Function<Tag, String> {
+   public enum KeyFunction implements Function<Tag, String> {
       INSTANCE;
       @Override
       public String apply(Tag in) {
@@ -77,7 +77,7 @@ public class Tags {
       return KeyFunction.INSTANCE;
    }
 
-   public static enum ResourceIdFunction implements Function<Tag, String> {
+   public enum ResourceIdFunction implements Function<Tag, String> {
       INSTANCE;
       @Override
       public String apply(Tag in) {

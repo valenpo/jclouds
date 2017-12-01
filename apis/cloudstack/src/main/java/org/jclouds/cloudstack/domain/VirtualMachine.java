@@ -22,11 +22,12 @@ import java.beans.ConstructorProperties;
 import java.util.Date;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableSet;
@@ -38,7 +39,7 @@ public class VirtualMachine {
 
    /**
     */
-   public static enum State {
+   public enum State {
       STARTING, RUNNING, STOPPING, STOPPED, DESTROYED, EXPUNGING, MIGRATING, ERROR, UNKNOWN, SHUTDOWNED, UNRECOGNIZED;
 
       @Override
@@ -1050,7 +1051,7 @@ public class VirtualMachine {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("id", id).add("account", account).add("cpuCount", cpuCount).add("cpuSpeed", cpuSpeed).add("cpuUsed", cpuUsed)
             .add("displayName", displayName).add("created", created).add("domain", domain).add("domainId", domainId)
             .add("usesVirtualNetwork", usesVirtualNetwork).add("group", group).add("groupId", groupId).add("guestOSId", guestOSId)

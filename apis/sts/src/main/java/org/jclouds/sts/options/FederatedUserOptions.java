@@ -16,6 +16,7 @@
  */
 package org.jclouds.sts.options;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.http.options.BaseHttpRequestOptions;
 
 import com.google.common.base.Objects;
@@ -110,7 +111,7 @@ public class FederatedUserOptions extends BaseHttpRequestOptions implements Clon
     */
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).omitNullValues().add("durationSeconds", durationSeconds)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("durationSeconds", durationSeconds)
             .add("policy", policy).toString();
    }
 }

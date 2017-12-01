@@ -48,6 +48,6 @@ public class AllNodesInGroupTerminated implements Predicate<RegionAndName> {
       // new nodes can have the region as their location, existing nodes, the parent is the
       // location
       return all(computeService.listNodesDetailsMatching(Predicates.<ComputeMetadata> or(locationId(input.getRegion()),
-               parentLocationId(input.getRegion()))), and(inGroup(input.getName()), TERMINATED));
+               parentLocationId(input.getRegion()))), Predicates.and(inGroup(input.getName()), TERMINATED));
    }
 }

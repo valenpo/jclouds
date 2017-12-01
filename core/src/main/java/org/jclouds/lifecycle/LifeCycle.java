@@ -56,7 +56,7 @@ public interface LifeCycle {
     /**
      * States that are possible for a component.
      */
-    public static enum Status {
+    public enum Status {
 
         /**
          * The component is inactive / has not been started

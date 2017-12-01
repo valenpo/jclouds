@@ -16,8 +16,8 @@
  */
 package org.jclouds.compute.config;
 
-import static com.google.common.base.Functions.compose;
-import static com.google.common.base.Objects.toStringHelper;
+import com.google.common.base.Functions;
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Predicates.notNull;
 
 import java.util.Set;
@@ -118,7 +118,7 @@ public class ComputeServiceAdapterContextModule<N, H, I, L> extends BaseComputeS
       return new Supplier<Set<? extends Image>>() {
          @Override
          public Set<? extends Image> get() {
-            return transformGuardingNull(adapter.listImages(), compose(addDefaultCredentialsToImage, transformer));
+            return transformGuardingNull(adapter.listImages(), Functions.compose(addDefaultCredentialsToImage, transformer));
          }
 
          public String toString() {

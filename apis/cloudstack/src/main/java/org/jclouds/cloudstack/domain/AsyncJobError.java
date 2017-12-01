@@ -18,17 +18,18 @@ package org.jclouds.cloudstack.domain;
 
 import java.beans.ConstructorProperties;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 public class AsyncJobError {
 
    /**
     * Error codes for job errors
     */
-   public static enum ErrorCode {
+   public enum ErrorCode {
       INTERNAL_ERROR(530),
       ACCOUNT_ERROR(531),
       ACCOUNT_RESOURCE_LIMIT_ERROR(532),
@@ -149,7 +150,7 @@ public class AsyncJobError {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("errorCode", errorCode).add("errorText", errorText);
    }
 

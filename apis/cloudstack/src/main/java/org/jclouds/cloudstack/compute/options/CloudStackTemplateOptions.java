@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.compute.options.TemplateOptions;
 import org.jclouds.domain.LoginCredentials;
 import org.jclouds.scriptbuilder.domain.Statement;
@@ -240,7 +241,7 @@ public class CloudStackTemplateOptions extends TemplateOptions implements Clonea
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
               .add("securityGroupIds", securityGroupIds)
               .add("ipsToNetworks", ipsToNetworks)
               .add("ipOnDefaultNetwork", ipOnDefaultNetwork)

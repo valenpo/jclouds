@@ -2473,7 +2473,7 @@ public class RestAnnotationProcessorTest extends BaseRestApiTest {
       void oneEndpointParam(@EndpointParam(parser = ConvertToURI.class) String EndpointParam);
 
       @Singleton
-      public static class ConvertToURI implements Function<Object, URI> {
+      class ConvertToURI implements Function<Object, URI> {
 
          @Override
          public URI apply(Object from) {
@@ -2487,7 +2487,7 @@ public class RestAnnotationProcessorTest extends BaseRestApiTest {
             @EndpointParam(parser = ConvertTwoToURI.class) String EndpointParam2);
 
       @Singleton
-      public static class ConvertTwoToURI implements Function<Object, URI> {
+      class ConvertTwoToURI implements Function<Object, URI> {
 
          @SuppressWarnings("unchecked")
          @Override

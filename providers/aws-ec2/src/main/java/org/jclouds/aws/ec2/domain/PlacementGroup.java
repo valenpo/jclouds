@@ -36,7 +36,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  *      />
  */
 public class PlacementGroup implements Comparable<PlacementGroup> {
-   public static enum State {
+   public enum State {
       PENDING, AVAILABLE, DELETING, DELETED, UNRECOGNIZED;
       public String value() {
          return name().toLowerCase();

@@ -113,7 +113,7 @@ public class ExecutorServiceModule extends AbstractModule {
    @Provides
    @Singleton
    final TimeLimiter timeLimiter(@Named(PROPERTY_USER_THREADS) ListeningExecutorService userExecutor) {
-      return new SimpleTimeLimiter(userExecutor);
+      return SimpleTimeLimiter.create(userExecutor);
    }
 
    @Provides

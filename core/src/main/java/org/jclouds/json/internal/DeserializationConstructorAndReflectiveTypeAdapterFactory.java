@@ -26,6 +26,7 @@ import java.lang.reflect.Modifier;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.json.internal.NamingStrategies.AnnotationConstructorNamingStrategy;
 
 import com.google.common.base.Objects;
@@ -250,7 +251,7 @@ public final class DeserializationConstructorAndReflectiveTypeAdapterFactory imp
 
       @Override
       public String toString() {
-         return Objects.toStringHelper(this).add("parameterizedCtor", parameterizedCtor)
+         return MoreObjects.toStringHelper(this).add("parameterizedCtor", parameterizedCtor)
                .add("parameterReaders", parameterReaders).add("serializer", serializer).toString();
       }
 

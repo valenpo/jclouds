@@ -22,12 +22,13 @@ import java.beans.ConstructorProperties;
 import java.util.Date;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableSet;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 /**
  * Class Snapshot
@@ -36,7 +37,7 @@ public class Snapshot {
 
    /**
     */
-   public static enum State {
+   public enum State {
 
       BACKED_UP, CREATING, BACKING_UP, UNRECOGNIZED;
 
@@ -56,7 +57,7 @@ public class Snapshot {
 
    /**
     */
-   public static enum Type {
+   public enum Type {
 
       MANUAL, RECURRING, UNRECOGNIZED;
 
@@ -71,7 +72,7 @@ public class Snapshot {
 
    /**
     */
-   public static enum Interval {
+   public enum Interval {
 
       HOURLY, DAILY, WEEKLY, MONTHLY, template, none, UNRECOGNIZED;
 
@@ -453,7 +454,7 @@ public class Snapshot {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("id", id).add("account", account).add("created", created).add("domain", domain).add("domainId", domainId)
             .add("interval", interval).add("jobId", jobId).add("jobStatus", jobStatus).add("name", name).add("snapshotType", snapshotType)
             .add("state", state).add("volumeId", volumeId).add("volumeName", volumeName).add("volumeType", volumeType)

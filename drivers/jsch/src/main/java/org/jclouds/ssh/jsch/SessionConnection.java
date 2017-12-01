@@ -19,6 +19,7 @@ package org.jclouds.ssh.jsch;
 import static com.google.common.base.Objects.equal;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.domain.Credentials;
 import org.jclouds.domain.LoginCredentials;
 import org.jclouds.javax.annotation.Nullable;
@@ -88,12 +89,12 @@ public final class SessionConnection implements Connection<Session> {
          Optional<Credentials> creds = proxyConfig.getCredentials();
          switch (proxyConfig.getType()) {
          case HTTP:
-            ProxyHTTP httpProxy = new ProxyHTTP(proxyEndpoint.get().getHostText(), proxyEndpoint.get().getPort());
+            ProxyHTTP httpProxy = new ProxyHTTP(proxyEndpoint.get().getHost(), proxyEndpoint.get().getPort());
             if (creds.isPresent())
                httpProxy.setUserPasswd(creds.get().identity, creds.get().credential);
             return proxy(httpProxy);
          case SOCKS:
-            ProxySOCKS5 socksProxy = new ProxySOCKS5(proxyEndpoint.get().getHostText(), proxyEndpoint.get().getPort());
+            ProxySOCKS5 socksProxy = new ProxySOCKS5(proxyEndpoint.get().getHost(), proxyEndpoint.get().getPort());
             if (creds.isPresent())
                socksProxy.setUserPasswd(creds.get().identity, creds.get().credential);
             return proxy(socksProxy);
@@ -166,7 +167,7 @@ public final class SessionConnection implements Connection<Session> {
    public Session create() throws Exception {
       JSch jsch = new JSch();
       session = jsch
-            .getSession(loginCredentials.getUser(), hostAndPort.getHostText(), hostAndPort.getPortOrDefault(22));
+            .getSession(loginCredentials.getUser(), hostAndPort.getHost(), hostAndPort.getPortOrDefault(22));
       if (sessionTimeout != 0)
          session.setTimeout(sessionTimeout);
       if (loginCredentials.hasUnencryptedPrivateKey()) {
@@ -253,7 +254,7 @@ public final class SessionConnection implements Connection<Session> {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper("").omitNullValues()
+      return MoreObjects.toStringHelper("").omitNullValues()
             .add("hostAndPort", hostAndPort).add("loginUser", loginCredentials.getUser())
             .add("session", session != null ? session.hashCode() : null)
             .add("connectTimeout", connectTimeout)

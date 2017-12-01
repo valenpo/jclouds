@@ -26,7 +26,7 @@ import java.util.Date;
  *      />
  */
 public class Attachment implements Comparable<Attachment> {
-   public static enum Status {
+   public enum Status {
       ATTACHING, ATTACHED, DETACHING, DETACHED, BUSY, UNRECOGNIZED;
 
       public String value() {

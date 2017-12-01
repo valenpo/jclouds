@@ -373,7 +373,8 @@ public class CloudApplicationArchitecturesEC2ApiLiveTest extends BaseComputeServ
       // (ids) narrows the
       // search
 
-      return Iterables.getOnlyElement(Iterables.getOnlyElement(reservations));
+      return Iterables.getOnlyElement((Reservation<? extends RunningInstance>)
+              Iterables.getOnlyElement(reservations));
    }
 
    /**

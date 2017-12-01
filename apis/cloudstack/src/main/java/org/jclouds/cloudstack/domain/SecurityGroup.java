@@ -21,10 +21,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 
@@ -296,7 +297,7 @@ public class SecurityGroup implements Comparable<SecurityGroup> {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this).add("id", id).add("account", account).add("name", name).add("description", description)
+      return MoreObjects.toStringHelper(this).add("id", id).add("account", account).add("name", name).add("description", description)
             .add("domain", domain).add("domainId", domainId).add("jobId", jobId).add("jobStatus", jobStatus).add("ingressRules", ingressRules)
             .add("tags", tags);
    }

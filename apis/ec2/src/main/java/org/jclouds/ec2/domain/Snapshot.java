@@ -26,7 +26,7 @@ import java.util.Date;
  *      />
  */
 public class Snapshot implements Comparable<Snapshot> {
-   public static enum Status {
+   public enum Status {
       PENDING, COMPLETED, ERROR, UNRECOGNIZED;
       public String value() {
          return name().toLowerCase();

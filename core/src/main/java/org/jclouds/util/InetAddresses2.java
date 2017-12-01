@@ -27,7 +27,7 @@ import com.google.common.net.InetAddresses;
 
 public class InetAddresses2 {
    @Singleton
-   public static enum IsPrivateIPAddress implements Predicate<String> {
+   public enum IsPrivateIPAddress implements Predicate<String> {
       INSTANCE;
 
       public boolean apply(String in) {

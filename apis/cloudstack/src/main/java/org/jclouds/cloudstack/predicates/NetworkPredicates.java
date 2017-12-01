@@ -28,7 +28,7 @@ import com.google.common.collect.Iterables;
 
 public class NetworkPredicates {
 
-   public static enum HasFirewallServiceWhichSupportsStaticNAT implements Predicate<Network> {
+   public enum HasFirewallServiceWhichSupportsStaticNAT implements Predicate<Network> {
       INSTANCE;
 
       @Override
@@ -42,7 +42,7 @@ public class NetworkPredicates {
       }
    }
 
-   public static enum HasFirewallServiceWhichSupportsPortForwarding implements Predicate<Network> {
+   public enum HasFirewallServiceWhichSupportsPortForwarding implements Predicate<Network> {
       INSTANCE;
 
       @Override
@@ -56,7 +56,7 @@ public class NetworkPredicates {
       }
    }
 
-   public static enum HasLoadBalancerService implements Predicate<Network> {
+   public enum HasLoadBalancerService implements Predicate<Network> {
       INSTANCE;
 
       @Override
@@ -70,7 +70,7 @@ public class NetworkPredicates {
       }
    }
 
-   public static enum IsVirtualNetwork implements Predicate<Network> {
+   public enum IsVirtualNetwork implements Predicate<Network> {
       INSTANCE;
 
       @Override
@@ -85,7 +85,7 @@ public class NetworkPredicates {
       }
    }
     
-   public static enum IsSharedNetwork implements Predicate<Network> {
+   public enum IsSharedNetwork implements Predicate<Network> {
       INSTANCE;
 
       @Override
@@ -100,7 +100,7 @@ public class NetworkPredicates {
       }
    }
 
-   public static enum IsIsolatedNetwork implements Predicate<Network> {
+   public enum IsIsolatedNetwork implements Predicate<Network> {
       INSTANCE;
 
       @Override

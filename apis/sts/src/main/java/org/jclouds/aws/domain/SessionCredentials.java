@@ -20,6 +20,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Date;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.domain.Credentials;
 
 import com.google.common.base.Objects;
@@ -93,7 +94,7 @@ public final class SessionCredentials extends Credentials {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).omitNullValues().add("accessKeyId", identity)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("accessKeyId", identity)
             .add("sessionToken", sessionToken).add("expiration", expiration.orNull()).toString();
    }
 

@@ -27,7 +27,7 @@ import com.google.inject.ImplementedBy;
 @ImplementedBy(NodeMetadataImpl.class)
 public interface NodeMetadata extends ComputeMetadataIncludingStatus<NodeMetadata.Status> {
    
-   public static enum Status {
+   public enum Status {
       /**
        * The node is in transition
        */

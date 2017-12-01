@@ -21,10 +21,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableSet;
 
 public class IngressRule implements Comparable<IngressRule> {
@@ -288,7 +289,7 @@ public class IngressRule implements Comparable<IngressRule> {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("account", account).add("CIDR", CIDR).add("endPort", endPort).add("ICMPCode", ICMPCode)
             .add("ICMPType", ICMPType).add("protocol", protocol).add("id", id).add("securityGroupName", securityGroupName).add("startPort", startPort)
             .add("tags", tags);

@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.Collection;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.functions.ToLowerCase;
 import org.jclouds.http.internal.PayloadEnclosingImpl;
 import org.jclouds.io.Payload;
@@ -30,7 +31,7 @@ import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.util.Multimaps2;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.io.ByteSource;
@@ -218,7 +219,7 @@ public class HttpMessage extends PayloadEnclosingImpl {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper("").omitNullValues()
+      return MoreObjects.toStringHelper("").omitNullValues()
                     .add("headers", headers)
                     .add("payload", payload);
    }

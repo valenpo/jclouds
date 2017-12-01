@@ -67,7 +67,7 @@ public abstract class Operation {
       }
    }
 
-   public static enum Status {
+   public enum Status {
       PENDING,
       RUNNING,
       DONE

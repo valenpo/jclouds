@@ -16,7 +16,7 @@
  */
 package org.jclouds;
 
-import static com.google.common.base.Objects.toStringHelper;
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Predicates.containsPattern;
 import static com.google.common.base.Predicates.instanceOf;
@@ -31,7 +31,7 @@ import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Lists.newArrayListWithCapacity;
 import static com.google.common.collect.Maps.filterKeys;
-import static com.google.common.util.concurrent.MoreExecutors.sameThreadExecutor;
+ import static com.google.common.util.concurrent.MoreExecutors.newDirectExecutorService;
 import static org.jclouds.Constants.PROPERTY_API;
 import static org.jclouds.Constants.PROPERTY_API_VERSION;
 import static org.jclouds.Constants.PROPERTY_BUILD_VERSION;
@@ -547,7 +547,7 @@ public class ContextBuilder {
                return input.getClass().isAnnotationPresent(SingleThreaded.class);
             }
          })) {
-            modules.add(new ExecutorServiceModule(sameThreadExecutor()));
+            modules.add(new ExecutorServiceModule(newDirectExecutorService()));
          } else {
             modules.add(new ExecutorServiceModule());
          }

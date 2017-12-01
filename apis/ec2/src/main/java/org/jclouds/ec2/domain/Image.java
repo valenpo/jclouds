@@ -100,7 +100,7 @@ public class Image implements Comparable<Image> {
       this.hypervisor = checkNotNull(hypervisor, "hypervisor");
    }
 
-   public static enum ImageState {
+   public enum ImageState {
       /**
        * the image is successfully registered and available for launching
        */
@@ -122,7 +122,7 @@ public class Image implements Comparable<Image> {
       }
    }
 
-   public static enum Architecture {
+   public enum Architecture {
       I386, X86_64, UNRECOGNIZED;
       public String value() {
          return name().toLowerCase();
@@ -137,7 +137,7 @@ public class Image implements Comparable<Image> {
       }
    }
 
-   public static enum ImageType {
+   public enum ImageType {
 
       MACHINE, KERNEL, RAMDISK, UNRECOGNIZED;
       public String value() {

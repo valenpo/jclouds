@@ -22,6 +22,7 @@ import static com.google.common.base.Preconditions.checkState;
 import javax.annotation.Resource;
 import javax.inject.Named;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.compute.domain.ExecResponse;
 import org.jclouds.compute.domain.NodeMetadata;
 import org.jclouds.compute.reference.ComputeServiceConstants;
@@ -133,7 +134,7 @@ public class SudoAwareInitManager {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).add("node", node.getId()).add("name", init.getInstanceName())
+      return MoreObjects.toStringHelper(this).add("node", node.getId()).add("name", init.getInstanceName())
             .add("runAsRoot", runAsRoot).toString();
    }
 

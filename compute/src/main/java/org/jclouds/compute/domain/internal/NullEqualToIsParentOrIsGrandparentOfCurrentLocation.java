@@ -20,6 +20,7 @@ import static com.google.common.base.Preconditions.checkState;
 import static com.google.common.base.Predicates.equalTo;
 import static com.google.common.base.Predicates.or;
 
+import com.google.common.base.Predicates;
 import org.jclouds.compute.domain.ComputeMetadata;
 import org.jclouds.domain.Location;
 import org.jclouds.domain.LocationScope;
@@ -75,7 +76,7 @@ public class NullEqualToIsParentOrIsGrandparentOfCurrentLocation implements Pred
             predicates.add(equalTo(grandparent));
       }
       
-      return or(predicates.build()).apply(input.getLocation());
+      return Predicates.or(predicates.build()).apply(input.getLocation());
 
    }
 

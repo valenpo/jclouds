@@ -81,7 +81,7 @@ public final class StdStreamData {
    /**
     * Standard streams enum. The order of entries is important!
     */
-   public static enum StdStreamType {
+   public enum StdStreamType {
       IN, OUT, ERR;
    }
 }

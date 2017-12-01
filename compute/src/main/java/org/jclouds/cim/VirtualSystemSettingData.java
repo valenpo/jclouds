@@ -237,7 +237,7 @@ public class VirtualSystemSettingData extends ManagedElement {
     * Failures in this case means a failure that is detectable by the host platform, such as a
     * non-interruptible wait state condition.
     */
-   public static enum AutomaticRecoveryAction {
+   public enum AutomaticRecoveryAction {
 
       NONE(2),
 
@@ -274,7 +274,7 @@ public class VirtualSystemSettingData extends ManagedElement {
    /**
     * Action to take for the virtual system when the host is shut down.
     */
-   public static enum AutomaticShutdownAction {
+   public enum AutomaticShutdownAction {
 
       TURN_OFF(2),
 
@@ -311,7 +311,7 @@ public class VirtualSystemSettingData extends ManagedElement {
    /**
     * Action to take for the virtual system when the host is started.
     */
-   public static enum AutomaticStartupAction {
+   public enum AutomaticStartupAction {
 
       NONE(2),
 

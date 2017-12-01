@@ -21,11 +21,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.Map;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 
@@ -36,7 +37,7 @@ public class Capacity implements Comparable<Capacity> {
 
    /**
     */
-   public static enum Type {
+   public enum Type {
       MEMORY_ALLOCATED_BYTES(0),
       CPU_ALLOCATED_MHZ(1),
       PRIMARY_STORAGE_USED_BYTES(2),
@@ -266,7 +267,7 @@ public class Capacity implements Comparable<Capacity> {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("capacityTotal", capacityTotal).add("capacityUsed", capacityUsed).add("percentUsed", percentUsed)
             .add("podId", podId).add("podName", podName).add("type", type).add("zoneId", zoneId).add("zoneName", zoneName);
    }

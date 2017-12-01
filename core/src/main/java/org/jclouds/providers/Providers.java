@@ -38,7 +38,7 @@ import com.google.common.reflect.TypeToken;
  */
 public class Providers {
 
-   public static enum IdFunction implements Function<ProviderMetadata, String> {
+   public enum IdFunction implements Function<ProviderMetadata, String> {
       INSTANCE;
 
       @Override

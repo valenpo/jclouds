@@ -23,6 +23,7 @@ import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.compute.callables.RunScriptOnNode;
 import org.jclouds.compute.domain.NodeMetadata;
 import org.jclouds.compute.options.RunScriptOptions;
@@ -67,6 +68,6 @@ public class InitializeRunScriptOnNodeOrPlaceInBadMap implements Callable<RunScr
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).add("node", node).add("options", options).toString();
+      return MoreObjects.toStringHelper(this).add("node", node).add("options", options).toString();
    }
 }

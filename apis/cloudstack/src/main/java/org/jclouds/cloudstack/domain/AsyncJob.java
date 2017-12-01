@@ -21,10 +21,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.Date;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 /**
  * Class AsyncJob
@@ -34,7 +35,7 @@ public class AsyncJob<S> {
    /**
     * Valid job result codes
     */
-   public static enum ResultCode {
+   public enum ResultCode {
       SUCCESS(0),
       FAIL(530),
       UNKNOWN(-1);
@@ -69,7 +70,7 @@ public class AsyncJob<S> {
    /**
     * Valid async job statuses
     */
-   public static enum Status {
+   public enum Status {
       IN_PROGRESS(0),
       SUCCEEDED(1),
       FAILED(2),
@@ -441,7 +442,7 @@ public class AsyncJob<S> {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("accountId", accountId).add("cmd", cmd).add("created", created).add("id", id).add("instanceId", instanceId)
             .add("instanceType", instanceType).add("progress", progress).add("result", result).add("resultCode", resultCode)
             .add("resultType", resultType).add("status", status).add("userId", userId).add("error", error);

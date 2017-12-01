@@ -21,10 +21,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.List;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.openstack.trove.v1.internal.Volume;
 import org.jclouds.openstack.v2_0.domain.Link;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableList;
 
 /**
@@ -175,7 +176,7 @@ public class Instance implements Comparable<Instance>{
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("id", id).add("name", name).add("flavor", flavor).add("volume size", volume.getSize()).add("links", links).add("hostname", hostname);
    }
 

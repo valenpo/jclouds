@@ -41,7 +41,7 @@ public class TemplatePredicates {
       }
    }
 
-   public static enum PasswordEnabled implements Predicate<Template> {
+   public enum PasswordEnabled implements Predicate<Template> {
       INSTANCE;
 
       @Override

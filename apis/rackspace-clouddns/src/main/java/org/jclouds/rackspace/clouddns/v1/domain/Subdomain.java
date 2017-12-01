@@ -19,6 +19,7 @@ package org.jclouds.rackspace.clouddns.v1.domain;
 import java.beans.ConstructorProperties;
 import java.util.Date;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
@@ -88,7 +89,7 @@ public class Subdomain {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).omitNullValues().add("id", id).add("name", name).add("email", emailAddress)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("id", id).add("name", name).add("email", emailAddress)
             .add("comment", comment.orNull()).add("created", created).add("updated", updated).toString();
    }
 }

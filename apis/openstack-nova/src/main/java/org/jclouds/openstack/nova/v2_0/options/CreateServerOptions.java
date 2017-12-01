@@ -17,7 +17,7 @@
 package org.jclouds.openstack.nova.v2_0.options;
 
 import static com.google.common.base.Objects.equal;
-import static com.google.common.base.Objects.toStringHelper;
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Strings.emptyToNull;
@@ -31,14 +31,16 @@ import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.http.HttpRequest;
+import org.jclouds.openstack.nova.v2_0.NovaApi;
 import org.jclouds.openstack.nova.v2_0.domain.BlockDeviceMapping;
 import org.jclouds.openstack.nova.v2_0.domain.Network;
 import org.jclouds.rest.MapBinder;
 import org.jclouds.rest.binders.BindToJsonPayload;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ForwardingObject;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableList;
@@ -143,7 +145,7 @@ public class CreateServerOptions implements MapBinder {
    }
 
    protected ToStringHelper string() {
-      ToStringHelper toString = Objects.toStringHelper(this);
+      ToStringHelper toString = MoreObjects.toStringHelper(this);
       toString.add("keyName", keyName);
       if (!securityGroupNames.isEmpty())
          toString.add("securityGroupNames", securityGroupNames);
@@ -252,7 +254,7 @@ public class CreateServerOptions implements MapBinder {
          server.blockDeviceMappings = blockDeviceMappings;
       }
 
-      return bindToRequest(request, ImmutableMap.of("server", server));
+      return bindToRequest(request, (Object) ImmutableMap.of("server", server));
    }
 
    private static class NamedThingy extends ForwardingObject {

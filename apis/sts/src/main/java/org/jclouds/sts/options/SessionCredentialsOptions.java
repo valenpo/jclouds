@@ -16,6 +16,7 @@
  */
 package org.jclouds.sts.options;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.http.options.BaseHttpRequestOptions;
 
 import com.google.common.base.Objects;
@@ -132,7 +133,7 @@ public class SessionCredentialsOptions extends BaseHttpRequestOptions implements
     */
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).omitNullValues().add("serialNumber", serialNumber)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("serialNumber", serialNumber)
             .add("durationSeconds", durationSeconds).add("tokenCode", tokenCode).toString();
    }
 }

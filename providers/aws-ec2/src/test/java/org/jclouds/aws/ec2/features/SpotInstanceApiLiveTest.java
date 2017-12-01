@@ -40,6 +40,7 @@ import org.jclouds.aws.ec2.domain.SpotInstanceRequest;
 import org.jclouds.aws.ec2.predicates.SpotInstanceRequestActive;
 import org.jclouds.compute.internal.BaseComputeServiceContextLiveTest;
 import org.jclouds.ec2.domain.InstanceType;
+import org.jclouds.ec2.domain.Reservation;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -185,7 +186,8 @@ public class SpotInstanceApiLiveTest  extends BaseComputeServiceContextLiveTest 
       System.out.println(System.currentTimeMillis() - start);
       spot = refresh(request);
       assert spot.getInstanceId() != null : spot;
-      instance = getOnlyElement(getOnlyElement(client.getInstanceApi().get().describeInstancesInRegion(spot.getRegion(),
+      instance = getOnlyElement((Reservation<? extends AWSRunningInstance>)
+              getOnlyElement(client.getInstanceApi().get().describeInstancesInRegion(spot.getRegion(),
                spot.getInstanceId())));
       assertEquals(instance.getSpotInstanceRequestId(), spot.getId());
    }

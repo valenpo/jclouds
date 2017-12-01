@@ -21,6 +21,7 @@ import javax.inject.Singleton;
 
 import org.jclouds.ec2.EC2Api;
 import org.jclouds.ec2.domain.InstanceState;
+import org.jclouds.ec2.domain.Reservation;
 import org.jclouds.ec2.domain.RunningInstance;
 import org.jclouds.logging.Logger;
 import org.jclouds.rest.ResourceNotFoundException;
@@ -60,7 +61,7 @@ public class InstanceStateRunning implements Predicate<RunningInstance> {
    }
 
    private RunningInstance refresh(RunningInstance instance) {
-      return Iterables.getOnlyElement(Iterables.getOnlyElement(client
+      return Iterables.getOnlyElement((Reservation<? extends RunningInstance>) Iterables.getOnlyElement(client
             .getInstanceApi().get().describeInstancesInRegion(
                   instance.getRegion(), instance.getId())));
    }

@@ -34,7 +34,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class BootstrapConfig {
 
-   public static enum SSLVerifyMode {
+   public enum SSLVerifyMode {
       NONE, PEER;
 
       @Override

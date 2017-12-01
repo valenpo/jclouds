@@ -25,6 +25,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.inject.Named;
 
+import com.google.common.base.MoreObjects;
 import net.schmizz.sshj.SSHClient;
 import net.schmizz.sshj.common.Buffer.BufferException;
 import net.schmizz.sshj.transport.verification.PromiscuousVerifier;
@@ -156,7 +157,7 @@ public class SSHClientConnection implements Connection<SSHClient> {
       if (sessionTimeout != 0) {
          ssh.setTimeout(sessionTimeout);
       }
-      ssh.connect(hostAndPort.getHostText(), hostAndPort.getPortOrDefault(22));
+      ssh.connect(hostAndPort.getHost(), hostAndPort.getPortOrDefault(22));
       if (loginCredentials.hasUnencryptedPrivateKey()) {
          OpenSSHKeyFile key = new OpenSSHKeyFile();
          key.init(loginCredentials.getOptionalPrivateKey().get(), null);
@@ -235,7 +236,7 @@ public class SSHClientConnection implements Connection<SSHClient> {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper("").add("hostAndPort", hostAndPort).add("loginUser", loginCredentials.getUser())
+      return MoreObjects.toStringHelper("").add("hostAndPort", hostAndPort).add("loginUser", loginCredentials.getUser())
                .add("ssh", ssh != null ? ssh.hashCode() : null).add("connectTimeout", connectTimeout).add(
                         "sessionTimeout", sessionTimeout).toString();
    }

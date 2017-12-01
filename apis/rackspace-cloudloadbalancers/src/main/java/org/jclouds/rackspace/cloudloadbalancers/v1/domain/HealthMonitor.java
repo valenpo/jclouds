@@ -20,10 +20,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.beans.ConstructorProperties;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.base.Optional;
 
 /**
@@ -139,7 +140,7 @@ public class HealthMonitor {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this).omitNullValues().add("type", type).add("delay", delay)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("type", type).add("delay", delay)
             .add("timeout", timeout).add("attemptsBeforeDeactivation", attemptsBeforeDeactivation)
             .add("bodyRegex", bodyRegex.orNull()).add("statusRegex", statusRegex.orNull()).add("path", path.orNull())
             .add("hostHeader", hostHeader.orNull());
@@ -153,7 +154,7 @@ public class HealthMonitor {
    /**
     * Every health monitor has a type attribute to signify what kind of monitor it is.
     */
-   public static enum Type {
+   public enum Type {
       CONNECT, HTTP, HTTPS, UNRECOGNIZED;
 
       public static Type fromValue(String type) {

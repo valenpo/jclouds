@@ -23,6 +23,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.compute.domain.Image;
 import org.jclouds.compute.domain.ImageBuilder;
 import org.jclouds.compute.domain.OperatingSystem;
@@ -63,6 +64,6 @@ public class ImageInRegionToImage implements Function<ImageInRegion, Image> {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).toString();
+      return MoreObjects.toStringHelper(this).toString();
    }
 }

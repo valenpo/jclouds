@@ -22,10 +22,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.beans.ConstructorProperties;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 /**
  * Represents a CloudStack Cluster.
@@ -34,7 +35,7 @@ public class Cluster implements Comparable<Cluster> {
 
    /**
     */
-   public static enum ManagedState {
+   public enum ManagedState {
       MANAGED,
       PREPARE_UNMANAGED,
       UNMANAGED,
@@ -284,7 +285,7 @@ public class Cluster implements Comparable<Cluster> {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("id", id).add("allocationState", allocationState).add("clusterType", clusterType).add("hypervisor", hypervisor)
             .add("managedState", managedState).add("name", name).add("podId", podId).add("podName", podName).add("zoneId", zoneId).add("zoneName", zoneName);
    }

@@ -17,15 +17,18 @@
 package org.jclouds.rest.internal;
 
 import static com.google.common.base.Objects.equal;
-import static com.google.common.base.Objects.toStringHelper;
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Throwables.propagate;
 import static java.util.concurrent.TimeUnit.NANOSECONDS;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.util.concurrent.UncheckedTimeoutException;
 import org.jclouds.http.HttpCommand;
 import org.jclouds.http.HttpCommandExecutorService;
 import org.jclouds.http.HttpRequest;
@@ -114,7 +117,7 @@ public class InvokeHttpMethod implements Function<Invocation, Object> {
     *            if our thread is interrupted during execution
     * @throws UncheckedTimeoutException
     *            if the time limit is reached
-    * @see TimeLimiter#callWithTimeout(Callable, long, TimeUnit, boolean)
+    * @see TimeLimiter#callWithTimeout(Callable, long, TimeUnit)
     */
    public Object invokeWithTimeout(final Invocation invocation, final long limitNanos) {
       String commandName = config.getCommandName(invocation);
@@ -124,7 +127,7 @@ public class InvokeHttpMethod implements Function<Invocation, Object> {
       logger.debug(">> blocking on %s for %s", invocation, limitNanos);
       try {
          return timeLimiter
-               .callWithTimeout(new InvokeAndTransform(commandName, command), limitNanos, NANOSECONDS, true);
+               .callWithTimeout(new InvokeAndTransform(commandName, command), limitNanos, NANOSECONDS);
       } catch (Throwable t) {
          try {
             return fallback.createOrPropagate(t);
@@ -214,6 +217,6 @@ public class InvokeHttpMethod implements Function<Invocation, Object> {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper("").omitNullValues().add("annotationParser", annotationProcessor).toString();
+      return MoreObjects.toStringHelper("").omitNullValues().add("annotationParser", annotationProcessor).toString();
    }
 }

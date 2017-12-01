@@ -21,6 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.Date;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.rackspace.cloudloadbalancers.v1.domain.VirtualIP.Type;
 
 import com.google.common.base.Objects;
@@ -139,7 +140,7 @@ public final class LoadBalancerUsage {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).omitNullValues()
+      return MoreObjects.toStringHelper(this).omitNullValues()
             .add("averageNumConnections", averageNumConnections)
             .add("averageNumConnectionsSsl", averageNumConnectionsSsl)
             .add("incomingTransferInBytes", incomingTransferInBytes)

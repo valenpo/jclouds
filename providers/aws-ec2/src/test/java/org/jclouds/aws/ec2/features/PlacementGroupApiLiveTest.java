@@ -30,6 +30,7 @@ import java.util.SortedSet;
 import org.jclouds.aws.AWSResponseException;
 import org.jclouds.aws.domain.Region;
 import org.jclouds.aws.ec2.AWSEC2Api;
+import org.jclouds.aws.ec2.domain.AWSRunningInstance;
 import org.jclouds.aws.ec2.domain.PlacementGroup;
 import org.jclouds.aws.ec2.domain.PlacementGroup.State;
 import org.jclouds.aws.ec2.predicates.PlacementGroupAvailable;
@@ -42,6 +43,7 @@ import org.jclouds.compute.internal.BaseComputeServiceContextLiveTest;
 import org.jclouds.compute.predicates.NodePredicates;
 import org.jclouds.ec2.compute.domain.EC2HardwareBuilder;
 import org.jclouds.ec2.domain.InstanceType;
+import org.jclouds.ec2.domain.Reservation;
 import org.jclouds.scriptbuilder.domain.Statements;
 import org.jclouds.scriptbuilder.statements.java.InstallJDK;
 import org.jclouds.scriptbuilder.statements.login.AdminAccess;
@@ -186,7 +188,8 @@ public class PlacementGroupApiLiveTest extends BaseComputeServiceContextLiveTest
          Set<? extends NodeMetadata> nodes = view.getComputeService().createNodesInGroup(group, 1, template);
          NodeMetadata node = getOnlyElement(nodes);
 
-         getOnlyElement(getOnlyElement(client.getInstanceApi().get().describeInstancesInRegion(null,
+         getOnlyElement((Reservation<? extends AWSRunningInstance >)
+                 getOnlyElement(client.getInstanceApi().get().describeInstancesInRegion(null,
                   node.getProviderId())));
 
       } catch (RunNodesException e) {

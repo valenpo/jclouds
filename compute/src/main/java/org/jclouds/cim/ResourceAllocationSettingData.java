@@ -310,7 +310,7 @@ public class ResourceAllocationSettingData extends ManagedElement {
    /**
     * The type of resource this allocation setting represents.
     */
-   public static enum ResourceType {
+   public enum ResourceType {
 
       OTHER(1), COMPUTER_SYSTEM(2), PROCESSOR(3), MEMORY(4), IDE_CONTROLLER(5), PARALLEL_SCSI_HBA(6), FC_HBA(7), ISCSI_HBA(
             8), IB_HCA(9), ETHERNET_ADAPTER(10), OTHER_NETWORK_ADAPTER(11), IO_SLOT(12), IO_DEVICE(13), FLOPPY_DRIVE(14), CD_DRIVE(
@@ -348,7 +348,7 @@ public class ResourceAllocationSettingData extends ManagedElement {
    /**
     * Describes the consumers visibility to the allocated resource.
     */
-   public static enum ConsumerVisibility {
+   public enum ConsumerVisibility {
       UNKNOWN(0),
       /**
        * indicates the underlying or host resource is utilized and passed
@@ -399,7 +399,7 @@ public class ResourceAllocationSettingData extends ManagedElement {
     * HostResource array contains any entries, this property reflects how the
     * resource maps to those specific resources.
     */
-   public static enum MappingBehavior {
+   public enum MappingBehavior {
       UNKNOWN(0), NOT_SUPPORTED(2), DEDICATED(3), SOFT_AFFINITY(4), HARD_AFFINITY(5), DMTF_RESERVED(32767), VENDOR_RESERVED(
             65535);
 

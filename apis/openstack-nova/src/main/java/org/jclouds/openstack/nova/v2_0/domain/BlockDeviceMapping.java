@@ -20,10 +20,11 @@ import java.beans.ConstructorProperties;
 
 import javax.inject.Named;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 /**
  * A representation of a block device that can be used to boot a Nova instance.
@@ -185,7 +186,7 @@ public class BlockDeviceMapping {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("uuid", uuid)
             .add("deviceName", deviceName)
             .add("deviceType", deviceType)

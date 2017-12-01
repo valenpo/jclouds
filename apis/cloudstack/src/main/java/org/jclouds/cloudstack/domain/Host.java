@@ -24,10 +24,11 @@ import java.beans.ConstructorProperties;
 import java.util.Date;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableSet;
 
 /**
@@ -35,7 +36,7 @@ import com.google.common.collect.ImmutableSet;
  */
 public class Host implements Comparable<Host> {
 
-   public static enum ClusterType {
+   public enum ClusterType {
       CLOUD_MANAGED,
       EXTERNAL_MANAGED,
       UNKNOWN;
@@ -54,7 +55,7 @@ public class Host implements Comparable<Host> {
       }
    }
 
-   public static enum State {
+   public enum State {
       CONNECTING,
       UP,
       DOWN,
@@ -82,7 +83,7 @@ public class Host implements Comparable<Host> {
       }
    }
 
-   public static enum Type {
+   public enum Type {
       STORAGE,
       ROUTING,
       SECONDARY_STORAGE,
@@ -930,7 +931,7 @@ public class Host implements Comparable<Host> {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("id", id).add("allocationState", allocationState).add("averageLoad", averageLoad)
             .add("capabilities", capabilities).add("clusterId", clusterId).add("clusterName", clusterName)
             .add("clusterType", clusterType).add("cpuAllocated", cpuAllocated).add("cpuNumber", cpuNumber)

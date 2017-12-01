@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.CaseFormat;
@@ -55,7 +56,7 @@ public class VirtualGuest {
     * These states come from the powerState field. i.e.
     * https://api.softlayer.com/rest/v3/SoftLayer_Account/getVirtualGuests/{id}?objectMask=powerState
     */
-   public static enum State {
+   public enum State {
       HALTED,
       PAUSED,
       RUNNING,
@@ -909,7 +910,7 @@ public class VirtualGuest {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
               .add("accountId", accountId)
               .add("createDate", createDate)
               .add("domain", domain)

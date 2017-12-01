@@ -23,6 +23,7 @@ import java.util.Properties;
 
 import org.jclouds.Constants;
 import org.jclouds.ec2.EC2Api;
+import org.jclouds.ec2.domain.Reservation;
 import org.jclouds.ec2.domain.RunningInstance;
 import org.jclouds.ec2.internal.BaseEC2ApiExpectTest;
 import org.jclouds.http.HttpRequest;
@@ -75,7 +76,8 @@ public class InstanceApiExpectTest extends BaseEC2ApiExpectTest<EC2Api> {
       EC2Api apiWhenExist = requestsSendResponses(describeRegionsRequest, describeRegionsResponse,
               filter, filterResponse);
 
-      RunningInstance instance = getOnlyElement(getOnlyElement(apiWhenExist.getInstanceApi().get().describeInstancesInRegionWithFilter("us-east-1",
+      RunningInstance instance = getOnlyElement((Reservation<? extends RunningInstance>)
+              getOnlyElement(apiWhenExist.getInstanceApi().get().describeInstancesInRegionWithFilter("us-east-1",
               ImmutableMultimap.<String, String>builder()
                       .put("key-name", "adriancole.ec21")
                       .build())));

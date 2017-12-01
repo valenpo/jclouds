@@ -16,6 +16,7 @@
  */
 package org.jclouds.sqs.options;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.http.options.BaseHttpRequestOptions;
 
 import com.google.common.base.Objects;
@@ -154,7 +155,7 @@ public class ReceiveMessageOptions extends BaseHttpRequestOptions implements Clo
    @Override
    public String toString() {
       ImmutableSet<String> attributes = this.attributes.build();
-      return Objects.toStringHelper(this).omitNullValues().add("visibilityTimeout", visibilityTimeout)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("visibilityTimeout", visibilityTimeout)
             .add("attributes", !attributes.isEmpty() ? attributes : null).toString();
    }
 }

@@ -29,6 +29,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.cloudstack.CloudStackApi;
 import org.jclouds.cloudstack.compute.extensions.CloudStackImageExtension;
 import org.jclouds.cloudstack.compute.extensions.CloudStackSecurityGroupExtension;
@@ -177,7 +178,7 @@ public class CloudStackComputeServiceContextModule extends
                }
                @Override
                public String toString() {
-                  return Objects.toStringHelper(client.getGuestOSApi()).add("method", "listOSCategories").toString();
+                  return MoreObjects.toStringHelper(client.getGuestOSApi()).add("method", "listOSCategories").toString();
                }
             }, seconds, TimeUnit.SECONDS);
    }
@@ -202,7 +203,7 @@ public class CloudStackComputeServiceContextModule extends
                }
                @Override
                public String toString() {
-                  return Objects.toStringHelper(client.getGuestOSApi()).add("method", "listOSTypes").toString();
+                  return MoreObjects.toStringHelper(client.getGuestOSApi()).add("method", "listOSTypes").toString();
                }
             }, seconds, TimeUnit.SECONDS);
    }

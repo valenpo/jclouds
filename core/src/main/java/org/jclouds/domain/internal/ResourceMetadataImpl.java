@@ -24,12 +24,13 @@ import static com.google.common.collect.Ordering.natural;
 import java.net.URI;
 import java.util.Map;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.domain.Location;
 import org.jclouds.domain.ResourceMetadata;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.Maps;
 
 /**
@@ -130,7 +131,7 @@ public abstract class ResourceMetadataImpl<T extends Enum<T>> implements Resourc
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper("").omitNullValues().add("type", getType()).add("providerId", providerId)
+      return MoreObjects.toStringHelper("").omitNullValues().add("type", getType()).add("providerId", providerId)
                .add("name", name).add("location", location).add("uri", uri).add("userMetadata", userMetadata);
    }
 

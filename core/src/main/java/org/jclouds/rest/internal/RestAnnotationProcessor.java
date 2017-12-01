@@ -64,6 +64,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.Constants;
 import org.jclouds.domain.Credentials;
 import org.jclouds.http.HttpRequest;
@@ -110,7 +111,6 @@ import org.jclouds.rest.binders.BindToJsonPayloadWrappedWith;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Function;
-import com.google.common.base.Objects;
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.base.Supplier;
@@ -874,6 +874,6 @@ public class RestAnnotationProcessor implements Function<Invocation, HttpRequest
    public String toString() {
       String callerString = caller != null ? String.format("%s.%s%s", caller.getInvokable().getOwnerType().getRawType().getSimpleName(),
             caller.getInvokable().getName(), caller.getArgs()) : null;
-      return Objects.toStringHelper("").omitNullValues().add("caller", callerString).toString();
+      return MoreObjects.toStringHelper("").omitNullValues().add("caller", callerString).toString();
    }
 }

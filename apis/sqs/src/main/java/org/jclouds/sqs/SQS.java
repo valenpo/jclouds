@@ -19,6 +19,7 @@ package org.jclouds.sqs;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkArgument;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.collect.AdvanceUntilEmptyIterable;
 import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.sqs.domain.Message;
@@ -68,7 +69,7 @@ public class SQS {
          this.api = checkNotNull(api, "message api");
          checkArgument(max > 0, "max messages per request must be a positive number");
          this.max = max;
-         this.options = Objects.firstNonNull(options, NO_OPTIONS);
+         this.options = MoreObjects.firstNonNull(options, NO_OPTIONS);
       }
 
       @Override

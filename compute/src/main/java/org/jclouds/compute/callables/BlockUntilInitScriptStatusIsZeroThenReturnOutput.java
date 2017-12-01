@@ -27,6 +27,7 @@ import java.util.concurrent.TimeoutException;
 
 import javax.annotation.Resource;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.Constants;
 import org.jclouds.compute.domain.ExecResponse;
 import org.jclouds.compute.events.StatementOnNodeCompletion;
@@ -166,7 +167,7 @@ public class BlockUntilInitScriptStatusIsZeroThenReturnOutput extends AbstractFu
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).add("commandRunner", commandRunner).toString();
+      return MoreObjects.toStringHelper(this).add("commandRunner", commandRunner).toString();
    }
 
    @Override

@@ -21,6 +21,7 @@ import javax.inject.Singleton;
 
 import org.jclouds.aws.AWSResponseException;
 import org.jclouds.ec2.EC2Api;
+import org.jclouds.ec2.domain.Reservation;
 import org.jclouds.ec2.domain.RunningInstance;
 import org.jclouds.logging.Logger;
 
@@ -29,36 +30,36 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 
 /**
- * 
  * Tests to see if a task succeeds.
  */
 @Singleton
 public class InstanceHasIpAddress implements Predicate<RunningInstance> {
 
-   private final EC2Api client;
+    private final EC2Api client;
 
-   @Resource
-   protected Logger logger = Logger.NULL;
+    @Resource
+    protected Logger logger = Logger.NULL;
 
-   @Inject
-   public InstanceHasIpAddress(EC2Api client) {
-      this.client = client;
-   }
+    @Inject
+    public InstanceHasIpAddress(EC2Api client) {
+        this.client = client;
+    }
 
-   public boolean apply(RunningInstance instance) {
-      logger.trace("looking for ipAddress on instance %s", instance);
-      try {
-         instance = refresh(instance);
-         return instance.getIpAddress() != null;
-      } catch (AWSResponseException e) {
-         if (e.getError().getCode().equals("InvalidInstanceID.NotFound"))
-            return false;
-         throw e;
-      }
-   }
+    public boolean apply(RunningInstance instance) {
+        logger.trace("looking for ipAddress on instance %s", instance);
+        try {
+            instance = refresh(instance);
+            return instance.getIpAddress() != null;
+        } catch (AWSResponseException e) {
+            if (e.getError().getCode().equals("InvalidInstanceID.NotFound"))
+                return false;
+            throw e;
+        }
+    }
 
-   private RunningInstance refresh(RunningInstance instance) {
-      return Iterables.getOnlyElement(Iterables.getOnlyElement(client.getInstanceApi().get()
-               .describeInstancesInRegion(instance.getRegion(), instance.getId())));
-   }
+    private RunningInstance refresh(RunningInstance instance) {
+        return Iterables.getOnlyElement((Reservation<? extends RunningInstance>)
+                Iterables.getOnlyElement(client.getInstanceApi().get()
+                        .describeInstancesInRegion(instance.getRegion(), instance.getId())));
+    }
 }

@@ -25,6 +25,7 @@ import java.net.URI;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.compute.domain.ComputeMetadata;
 import org.jclouds.compute.domain.ComputeType;
 import org.jclouds.domain.Location;
@@ -32,7 +33,7 @@ import org.jclouds.domain.ResourceMetadata;
 import org.jclouds.domain.internal.ResourceMetadataImpl;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableSet;
 
 public class ComputeMetadataImpl extends ResourceMetadataImpl<ComputeType> implements ComputeMetadata {
@@ -106,7 +107,7 @@ public class ComputeMetadataImpl extends ResourceMetadataImpl<ComputeType> imple
    }
 
    protected ToStringHelper computeToStringPrefix() {
-      return Objects.toStringHelper("").omitNullValues().add("id", getId()).add("providerId", getProviderId())
+      return MoreObjects.toStringHelper("").omitNullValues().add("id", getId()).add("providerId", getProviderId())
                .add("uri", getUri()).add("name", getName()).add("uri", getUri()).add("location", getLocation());
    }
 

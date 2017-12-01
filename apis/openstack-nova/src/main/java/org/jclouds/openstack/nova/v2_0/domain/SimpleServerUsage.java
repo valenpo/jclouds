@@ -23,10 +23,11 @@ import java.util.Date;
 
 import javax.inject.Named;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 /**
  * Information the SimpleTenantUsage extension return data about each Server
@@ -36,7 +37,7 @@ public class SimpleServerUsage {
 
    /**
     */
-   public static enum Status {
+   public enum Status {
       
       UNRECOGNIZED, ACTIVE;
       
@@ -299,7 +300,7 @@ public class SimpleServerUsage {
    }
    
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("instanceName", instanceName).add("hours", hours).add("flavorMemoryMb", flavorMemoryMb).add("flavorLocalGb", flavorLocalGb).add("flavorVcpus", flavorVcpus).add("tenantId", tenantId).add("flavorName", flavorName).add("instanceCreated", instanceCreated).add("instanceTerminated", instanceTerminated).add("instanceStatus", instanceStatus).add("uptime", uptime);
    }
    

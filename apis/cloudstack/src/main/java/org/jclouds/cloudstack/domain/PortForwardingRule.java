@@ -21,11 +21,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableSet;
 
 /**
@@ -33,7 +34,7 @@ import com.google.common.collect.ImmutableSet;
  */
 public class PortForwardingRule implements Comparable<PortForwardingRule> {
 
-   public static enum Protocol {
+   public enum Protocol {
       TCP,
       UDP,
       ICMP,
@@ -53,7 +54,7 @@ public class PortForwardingRule implements Comparable<PortForwardingRule> {
       }
    }
 
-   public static enum State {
+   public enum State {
       STAGED,     // Rule been created but has never got through network rule conflict detection.
       // Rules in this state can not be sent to network elements.
       ADD,        // Add means the rule has been created and has gone through network rule conflict detection.
@@ -437,7 +438,7 @@ public class PortForwardingRule implements Comparable<PortForwardingRule> {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("id", id).add("IPAddress", IPAddress).add("IPAddressId", IPAddressId).add("privatePort", privatePort)
             .add("protocol", protocol).add("publicPort", publicPort).add("state", state).add("virtualMachineDisplayName", virtualMachineDisplayName)
             .add("virtualMachineId", virtualMachineId).add("virtualMachineName", virtualMachineName).add("CIDRs", CIDRs)

@@ -17,7 +17,7 @@
 package org.jclouds.route53.domain;
 
 import static com.google.common.base.Objects.equal;
-import static com.google.common.base.Objects.toStringHelper;
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -43,7 +43,7 @@ public class ChangeBatch extends ForwardingList<ActionOnResourceRecordSet> {
    private final Optional<String> comment;
    private final List<ActionOnResourceRecordSet> changes;
 
-   public static enum Action {
+   public enum Action {
       CREATE, DELETE;
    }
 

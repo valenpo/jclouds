@@ -36,11 +36,6 @@ public class BindCredentialsToJsonPayload extends BindToJsonPayload implements M
    }
 
    @Override
-   public <R extends HttpRequest> R bindToRequest(R request, Object toBind) {
-      throw new IllegalStateException("BindCredentialsToJsonPayload needs parameters");
-   }
-
-   @Override
    public <R extends HttpRequest> R bindToRequest(R request, Map<String, Object> postParams) {
       return super.bindToRequest(request, ImmutableMap.of("credentials", postParams));
    }

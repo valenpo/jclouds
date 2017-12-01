@@ -29,7 +29,7 @@ import com.google.inject.ImplementedBy;
 @ImplementedBy(ImageImpl.class)
 public interface Image extends ComputeMetadataIncludingStatus<Image.Status> {
 
-   public static enum Status {
+   public enum Status {
       /**
        * The image is in transition
        */

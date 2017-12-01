@@ -16,6 +16,19 @@
  */
 package org.jclouds.proxy.internal;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Optional;
+import com.google.common.base.Strings;
+import com.google.common.net.HostAndPort;
+import com.google.inject.Inject;
+import org.jclouds.domain.Credentials;
+import org.jclouds.proxy.ProxyConfig;
+
+import javax.inject.Named;
+import javax.inject.Singleton;
+import java.net.Proxy;
+import java.net.Proxy.Type;
+
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.jclouds.Constants.PROPERTY_PROXY_ENABLE_JVM_PROXY;
 import static org.jclouds.Constants.PROPERTY_PROXY_HOST;
@@ -24,21 +37,6 @@ import static org.jclouds.Constants.PROPERTY_PROXY_PORT;
 import static org.jclouds.Constants.PROPERTY_PROXY_SYSTEM;
 import static org.jclouds.Constants.PROPERTY_PROXY_TYPE;
 import static org.jclouds.Constants.PROPERTY_PROXY_USER;
-
-import java.net.Proxy;
-import java.net.Proxy.Type;
-
-import javax.inject.Named;
-import javax.inject.Singleton;
-
-import org.jclouds.domain.Credentials;
-import org.jclouds.proxy.ProxyConfig;
-
-import com.google.common.base.Objects;
-import com.google.common.base.Optional;
-import com.google.common.base.Strings;
-import com.google.common.net.HostAndPort;
-import com.google.inject.Inject;
 
 /**
  * Configuration derived from Guice properties.
@@ -123,7 +121,7 @@ public class GuiceProxyConfig implements ProxyConfig {
     */
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).omitNullValues().add("systemProxies", systemProxies ? "true" : null)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("systemProxies", systemProxies ? "true" : null)
             .add("jvmProxyEnabled", jvmProxyEnabled ? "true" : "false")
             .add("proxyHostPort", getProxy().orNull()).add("user", user).add("type", host != null ? type : null).toString();
    }

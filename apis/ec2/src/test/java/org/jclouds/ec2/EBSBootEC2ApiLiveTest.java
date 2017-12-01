@@ -519,7 +519,7 @@ public class EBSBootEC2ApiLiveTest extends BaseComputeServiceContextLiveTest {
       // the
       // search
 
-      instance = Iterables.getOnlyElement(Iterables.getOnlyElement(reservations));
+      instance = Iterables.getOnlyElement((Reservation<? extends RunningInstance>) Iterables.getOnlyElement(reservations));
 
       System.out.printf("%d: %s awaiting ssh service to start%n", System.currentTimeMillis(), instance.getIpAddress());
       assert socketTester.apply(HostAndPort.fromParts(instance.getIpAddress(), 22));

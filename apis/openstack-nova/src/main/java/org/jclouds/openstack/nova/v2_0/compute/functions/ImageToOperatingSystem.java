@@ -32,6 +32,7 @@ import java.util.regex.Pattern;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.compute.domain.OperatingSystem;
 import org.jclouds.compute.domain.OsFamily;
 import org.jclouds.compute.reference.ComputeServiceConstants;
@@ -68,7 +69,7 @@ public class ImageToOperatingSystem implements Function<Image, OperatingSystem> 
       OsFamily osFamily = null;
       String osVersion = null;
 
-      String imageName = Objects.firstNonNull(from.getName(), "unspecified");
+      String imageName = MoreObjects.firstNonNull(from.getName(), "unspecified");
 
       boolean is64Bit = true;
 

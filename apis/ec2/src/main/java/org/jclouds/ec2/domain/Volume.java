@@ -44,7 +44,7 @@ public class Volume implements Comparable<Volume> {
     * instance is shut down.
     * 
     */
-   public static enum InstanceInitiatedShutdownBehavior {
+   public enum InstanceInitiatedShutdownBehavior {
       STOP, TERMINATE, UNRECOGNIZED;
       public String value() {
          return name().toLowerCase();
@@ -64,7 +64,7 @@ public class Volume implements Comparable<Volume> {
       }
    }
 
-   public static enum Status {
+   public enum Status {
       CREATING, AVAILABLE, IN_USE, DELETING, ERROR, UNRECOGNIZED;
       public String value() {
          return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_HYPHEN, name());

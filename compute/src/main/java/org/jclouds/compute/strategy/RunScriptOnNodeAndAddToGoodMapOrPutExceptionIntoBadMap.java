@@ -26,6 +26,7 @@ import java.util.concurrent.Callable;
 import javax.annotation.Resource;
 import javax.inject.Named;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.compute.callables.RunScriptOnNode;
 import org.jclouds.compute.domain.ExecResponse;
 import org.jclouds.compute.domain.NodeMetadata;
@@ -75,7 +76,7 @@ public class RunScriptOnNodeAndAddToGoodMapOrPutExceptionIntoBadMap implements C
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).add("runScriptOnNode", runScriptOnNode).add("goodNodes", goodNodes).add(
+      return MoreObjects.toStringHelper(this).add("runScriptOnNode", runScriptOnNode).add("goodNodes", goodNodes).add(
                "badNodes", badNodes).toString();
    }
 

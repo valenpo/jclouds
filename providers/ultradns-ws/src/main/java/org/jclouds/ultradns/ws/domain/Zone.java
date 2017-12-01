@@ -19,6 +19,7 @@ package org.jclouds.ultradns.ws.domain;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.base.Optional;
 
@@ -122,12 +123,12 @@ public final class Zone {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).omitNullValues().add("id", id).add("name", name).add("type", type)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("id", id).add("name", name).add("type", type)
             .add("accountId", accountId).add("ownerId", ownerId).add("dnssecStatus", dnssecStatus)
             .add("primarySrc", primarySrc.orNull()).toString();
    }
 
-   public static enum Type {
+   public enum Type {
 
       PRIMARY(1), SECONDARY(2), ALIAS(3), UNRECOGNIZED(-1);
 
@@ -164,7 +165,7 @@ public final class Zone {
       }
    }
 
-   public static enum DNSSECStatus {
+   public enum DNSSECStatus {
 
       SIGNED, UNSIGNED, UNRECOGNIZED;
 

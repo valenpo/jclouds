@@ -44,4 +44,9 @@ public abstract class Validator<T> implements Predicate<T> {
      * @throws IllegalArgumentException if validation failed
      */
     public abstract void validate(@Nullable T t) throws IllegalArgumentException;
+
+    @Override
+    public boolean test(@javax.annotation.Nullable T input) {
+        return this.apply(input);
+    }
 }

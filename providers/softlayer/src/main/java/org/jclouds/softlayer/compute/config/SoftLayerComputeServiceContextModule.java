@@ -23,6 +23,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.collect.Memoized;
 import org.jclouds.compute.ComputeServiceAdapter;
 import org.jclouds.compute.config.ComputeServiceAdapterContextModule;
@@ -91,7 +92,7 @@ public class SoftLayerComputeServiceContextModule extends
 
                  @Override
                  public String toString() {
-                    return Objects.toStringHelper(api)
+                    return MoreObjects.toStringHelper(api)
                             .add("method", "virtualGuestApi.getCreateObjectOptions")
                             .toString();
                  }

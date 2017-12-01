@@ -16,6 +16,7 @@
  */
 package org.jclouds.sqs.options;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.http.options.BaseHttpRequestOptions;
 
 import com.google.common.base.Objects;
@@ -99,6 +100,6 @@ public class SendMessageOptions extends BaseHttpRequestOptions implements Clonea
     */
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).omitNullValues().add("delaySeconds", delaySeconds).toString();
+      return MoreObjects.toStringHelper(this).omitNullValues().add("delaySeconds", delaySeconds).toString();
    }
 }

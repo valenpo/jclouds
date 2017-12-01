@@ -44,11 +44,6 @@ public class BindSecurityGroupRuleToJsonPayload extends BindToJsonPayload implem
    }
 
    @Override
-   public <R extends HttpRequest> R bindToRequest(R request, Object toBind) {
-      throw new IllegalStateException("BindCredentialsToJsonPayload needs parameters");
-   }
-
-   @Override
    public <R extends HttpRequest> R bindToRequest(R request, Map<String, Object> postParams) {
       Builder<String, Object> payload = ImmutableMap.builder();
       payload.putAll(postParams);
@@ -61,6 +56,6 @@ public class BindSecurityGroupRuleToJsonPayload extends BindToJsonPayload implem
       payload.put("from_port", ingress.getFromPort() + "");
       payload.put("to_port", ingress.getToPort() + "");
 
-      return super.bindToRequest(request, ImmutableMap.of("security_group_rule", payload.build()));
+      return super.bindToRequest(request, (Object) ImmutableMap.of("security_group_rule", payload.build()));
    }
 }

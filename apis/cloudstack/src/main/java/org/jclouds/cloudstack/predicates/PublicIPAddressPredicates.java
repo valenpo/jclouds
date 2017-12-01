@@ -43,7 +43,7 @@ public class PublicIPAddressPredicates {
       }
    }
 
-   public static enum Available implements Predicate<PublicIPAddress> {
+   public enum Available implements Predicate<PublicIPAddress> {
       INSTANCE;
 
       @Override

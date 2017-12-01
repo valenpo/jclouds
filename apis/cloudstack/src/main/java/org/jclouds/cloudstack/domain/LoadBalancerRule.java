@@ -21,11 +21,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableSet;
 
 /**
@@ -35,7 +36,7 @@ public class LoadBalancerRule {
 
    /**
     */
-   public static enum State {
+   public enum State {
       ADD, ACTIVE, UNRECOGNIZED;
 
       @Override
@@ -53,7 +54,7 @@ public class LoadBalancerRule {
 
    }
 
-   public static enum Algorithm {
+   public enum Algorithm {
       SOURCE, ROUNDROBIN, LEASTCONN, UNRECOGNIZED;
 
       @Override
@@ -431,7 +432,7 @@ public class LoadBalancerRule {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("id", id).add("account", account).add("algorithm", algorithm).add("description", description).add("domain", domain).add("domainId", domainId).add("name", name).add("privatePort", privatePort).add("publicIP", publicIP).add("publicIPId", publicIPId).add("publicPort", publicPort).add("state", state).add("CIDRs", CIDRs).add("zoneId", zoneId);
    }
 

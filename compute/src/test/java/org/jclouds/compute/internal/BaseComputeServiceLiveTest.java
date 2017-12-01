@@ -557,7 +557,7 @@ public abstract class BaseComputeServiceLiveTest extends BaseComputeServiceConte
          throw e;
       }
 
-      Map<String, ? extends NodeMetadata> metadataMap = newLinkedHashMap(uniqueIndex(
+      Map<String, ? extends NodeMetadata> metadataMap = newLinkedHashMap((Map<String, NodeMetadata>) uniqueIndex(
             filter(client.listNodesDetailsMatching(all()), and(inGroup(group), not(TERMINATED))),
             new Function<NodeMetadata, String>() {
 

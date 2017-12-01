@@ -40,13 +40,14 @@ import java.net.URI;
 import java.util.Properties;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.Context;
 import org.jclouds.JcloudsVersion;
 import org.jclouds.View;
 import org.jclouds.apis.ApiMetadata;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.TypeToken;
@@ -348,7 +349,7 @@ public abstract class BaseApiMetadata implements ApiMetadata {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper("").add("id", getId()).add("name", getName()).add("views", getViews()).add(
+      return MoreObjects.toStringHelper("").add("id", getId()).add("name", getName()).add("views", getViews()).add(
                "endpointName", getEndpointName()).add("identityName", getIdentityName()).add("credentialName",
                getCredentialName()).add("documentation", getDocumentation());
    }

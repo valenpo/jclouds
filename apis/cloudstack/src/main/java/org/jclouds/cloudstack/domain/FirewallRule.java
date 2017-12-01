@@ -21,11 +21,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 import com.google.common.collect.ImmutableSet;
 
 /**
@@ -35,7 +36,7 @@ public class FirewallRule implements Comparable<FirewallRule> {
 
    /**
     */
-   public static enum Protocol {
+   public enum Protocol {
       TCP,
       UDP,
       ICMP,
@@ -55,7 +56,7 @@ public class FirewallRule implements Comparable<FirewallRule> {
       }
    }
 
-   public static enum State {
+   public enum State {
       STAGED,     // Rule been created but has never got through network rule conflict detection.
       // Rules in this state can not be sent to network elements.
       ADD,        // Add means the rule has been created and has gone through network rule conflict detection.
@@ -341,7 +342,7 @@ public class FirewallRule implements Comparable<FirewallRule> {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("id", id).add("CIDRs", CIDRs).add("startPort", startPort).add("endPort", endPort).add("icmpCode", icmpCode)
             .add("icmpType", icmpType).add("ipAddress", ipAddress).add("ipAddressId", ipAddressId).add("protocol", protocol).add("state", state)
             .add("tags", tags);

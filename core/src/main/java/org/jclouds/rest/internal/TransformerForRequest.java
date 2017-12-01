@@ -16,7 +16,7 @@
  */
 package org.jclouds.rest.internal;
 
-import static com.google.common.base.Functions.compose;
+import com.google.common.base.Functions;
 import static com.google.inject.util.Types.newParameterizedType;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
@@ -85,7 +85,7 @@ public class TransformerForRequest implements Function<HttpRequest, Function<Htt
       Class<? extends HandlerWithResult<?>> handler = getSaxResponseParserClassOrNull(request.getInvocation()
             .getInvokable());
       if (handler != null) {
-         transformer = parserFactory.create(injector.getInstance(handler));
+         transformer = parserFactory.create((HandlerWithResult<? extends Object>) injector.getInstance(handler));
       } else {
          transformer = getTransformerForMethod(request.getInvocation(), injector);
       }
@@ -98,7 +98,7 @@ public class TransformerForRequest implements Function<HttpRequest, Function<Htt
          if (wrappingTransformer instanceof InvocationContext<?>) {
             ((InvocationContext<?>) wrappingTransformer).setContext(request);
          }
-         transformer = compose(Function.class.cast(wrappingTransformer), transformer);
+         transformer = Functions.compose(Function.class.cast(wrappingTransformer), transformer);
       }
       return transformer;
    }
@@ -185,7 +185,7 @@ public class TransformerForRequest implements Function<HttpRequest, Function<Htt
          transformer = new ParseFirstJsonValueNamed(injector.getInstance(GsonWrapper.class),
                TypeLiteral.get(returnVal), invoked.getAnnotation(SelectJson.class).value());
          if (invoked.isAnnotationPresent(OnlyElement.class))
-            transformer = compose(new OnlyElementOrNull(), transformer);
+            transformer = Functions.compose(new OnlyElementOrNull(), transformer);
       } else {
          transformer = injector.getInstance(getParserOrThrowException(invocation));
       }

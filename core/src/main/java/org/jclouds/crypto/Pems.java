@@ -45,6 +45,7 @@ import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Map;
 
@@ -116,7 +117,7 @@ public class Pems {
     * </pre>
     * 
     */
-   private static enum PemReader implements Function<CharSequence, Pem> {
+   private enum PemReader implements Function<CharSequence, Pem> {
       INSTANCE;
       private static final String BEGIN = "-----BEGIN ";
       private static final String END = "-----END ";
@@ -230,7 +231,7 @@ public class Pems {
     * @param keyBytes
     *           Encoded PKCS#1 rsa key.
     */
-   private static enum DecodeRSAPrivateCrtKeySpec implements PemProcessor.ResultParser<KeySpec> {
+   private enum DecodeRSAPrivateCrtKeySpec implements PemProcessor.ResultParser<KeySpec> {
       INSTANCE;
 
       @Override
@@ -292,7 +293,7 @@ public class Pems {
     * @param keyBytes
     *           Encoded PKCS#1 rsa key.
     */
-   private static enum DecodeRSAPublicKeySpec implements PemProcessor.ResultParser<KeySpec> {
+   private enum DecodeRSAPublicKeySpec implements PemProcessor.ResultParser<KeySpec> {
       INSTANCE;
       @Override
       public KeySpec parseResult(byte[] bytes) throws IOException {

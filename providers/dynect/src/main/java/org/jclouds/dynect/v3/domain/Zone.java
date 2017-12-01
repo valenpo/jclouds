@@ -17,7 +17,7 @@
 package org.jclouds.dynect.v3.domain;
 
 import static com.google.common.base.Objects.equal;
-import static com.google.common.base.Objects.toStringHelper;
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.beans.ConstructorProperties;
@@ -36,7 +36,7 @@ public final class Zone {
    @Named("serial_style")
    private final SerialStyle serialStyle;
 
-   public static enum Type {
+   public enum Type {
       PRIMARY, SECONDARY;
 
       @Override
@@ -50,7 +50,7 @@ public final class Zone {
 
    }
 
-   public static enum SerialStyle {
+   public enum SerialStyle {
       /**
        * Serials are incremented by 1 on every change
        */

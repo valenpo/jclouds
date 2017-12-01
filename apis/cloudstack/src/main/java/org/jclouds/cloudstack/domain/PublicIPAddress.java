@@ -22,12 +22,13 @@ import java.beans.ConstructorProperties;
 import java.util.Date;
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableSet;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 /**
  * Class PublicIPAddress
@@ -36,7 +37,7 @@ public class PublicIPAddress {
 
    /**
     */
-   public static enum State {
+   public enum State {
       ALLOCATING, ALLOCATED, RELEASING, UNRECOGNIZED;
 
       @Override
@@ -576,7 +577,7 @@ public class PublicIPAddress {
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
             .add("id", id).add("account", account).add("allocated", allocated).add("associatedNetworkId", associatedNetworkId)
             .add("domain", domain).add("domainId", domainId).add("usesVirtualNetwork", usesVirtualNetwork).add("IPAddress", IPAddress)
             .add("isSourceNAT", isSourceNAT).add("isStaticNAT", isStaticNAT).add("networkId", networkId).add("state", state)

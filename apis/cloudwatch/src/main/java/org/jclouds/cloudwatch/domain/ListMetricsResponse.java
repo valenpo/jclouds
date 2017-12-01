@@ -18,6 +18,7 @@ package org.jclouds.cloudwatch.domain;
 
 import java.util.Set;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 
 import com.google.common.base.Objects;
@@ -80,7 +81,7 @@ public class ListMetricsResponse extends ForwardingSet<Metric> {
     */
    @Override
    public String toString() {
-      return Objects.toStringHelper(this)
+      return MoreObjects.toStringHelper(this)
                     .add("metrics", metrics)
                     .add("nextToken", nextToken).toString();
    }

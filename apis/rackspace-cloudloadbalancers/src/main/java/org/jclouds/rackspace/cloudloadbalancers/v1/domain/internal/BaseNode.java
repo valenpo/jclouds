@@ -20,8 +20,9 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 /**
  * The nodes defined by the load balancer are responsible for servicing the requests received
@@ -97,7 +98,7 @@ public class BaseNode<T extends BaseNode<T>> implements Comparable<BaseNode<T>> 
    }
 
    protected ToStringHelper string() {
-      return Objects.toStringHelper(this).omitNullValues().add("address", address).add("port", port)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("address", address).add("port", port)
             .add("condition", condition).add("type", type).add("weight", weight);
    }
 
@@ -126,7 +127,7 @@ public class BaseNode<T extends BaseNode<T>> implements Comparable<BaseNode<T>> 
    /**
     * Virtual IP Conditions
     */
-   public static enum Condition {
+   public enum Condition {
       /**
        * Node is permitted to accept new connections.
        */
@@ -158,7 +159,7 @@ public class BaseNode<T extends BaseNode<T>> implements Comparable<BaseNode<T>> 
    /**
     * Type of node.
     */
-   public static enum Type {
+   public enum Type {
       /**
        * Nodes defined as PRIMARY are in the normal rotation to receive traffic from the load balancer.
        */

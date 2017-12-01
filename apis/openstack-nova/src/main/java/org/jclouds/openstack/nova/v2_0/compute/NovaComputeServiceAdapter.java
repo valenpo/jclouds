@@ -31,6 +31,7 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.compute.ComputeServiceAdapter;
 import org.jclouds.compute.domain.Template;
 import org.jclouds.compute.reference.ComputeServiceConstants;
@@ -197,7 +198,7 @@ public class NovaComputeServiceAdapter implements
 
                         @Override
                         public String apply(Image input) {
-                           return Objects.toStringHelper("").add("id", input.getId()).add("status", input.getStatus())
+                           return MoreObjects.toStringHelper("").add("id", input.getId()).add("status", input.getStatus())
                                     .toString();
                         }
 

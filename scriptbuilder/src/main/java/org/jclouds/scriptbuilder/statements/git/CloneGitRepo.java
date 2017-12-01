@@ -20,6 +20,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.net.URI;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.scriptbuilder.domain.GitRepoAndRef;
 import org.jclouds.scriptbuilder.domain.OsFamily;
 import org.jclouds.scriptbuilder.domain.Statement;
@@ -190,7 +191,7 @@ public class CloneGitRepo implements Statement {
     */
    @Override
    public String toString() {
-      return Objects.toStringHelper(this).omitNullValues().add("gitRepoAndRef", gitRepoAndRef)
+      return MoreObjects.toStringHelper(this).omitNullValues().add("gitRepoAndRef", gitRepoAndRef)
             .add("directory", directory.orNull()).toString();
    }
 

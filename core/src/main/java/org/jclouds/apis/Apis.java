@@ -39,7 +39,7 @@ import com.google.common.reflect.TypeToken;
  */
 public class Apis {
 
-   private static enum IdFunction implements Function<ApiMetadata, String> {
+   private enum IdFunction implements Function<ApiMetadata, String> {
       INSTANCE;
 
       @Override

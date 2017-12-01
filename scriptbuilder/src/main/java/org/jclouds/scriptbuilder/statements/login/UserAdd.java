@@ -21,6 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.List;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.scriptbuilder.domain.OsFamily;
 import org.jclouds.scriptbuilder.domain.Statement;
@@ -256,6 +257,6 @@ public class UserAdd implements Statement {
 
    @Override
    public String toString() {
-      return Objects.toStringHelper("").add("login", login).toString();
+      return MoreObjects.toStringHelper("").add("login", login).toString();
    }
 }

@@ -22,6 +22,7 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.google.common.base.MoreObjects;
 import org.jclouds.compute.reference.ComputeServiceConstants;
 import org.jclouds.logging.Logger;
 import org.jclouds.openstack.nova.v2_0.NovaApi;
@@ -67,6 +68,6 @@ public class RemoveFloatingIpFromNodeAndDeallocate implements Function<RegionAnd
 
    @Override
    public String toString() {
-      return Objects.toStringHelper("RemoveFloatingIpFromNodeAndDecreate").toString();
+      return MoreObjects.toStringHelper("RemoveFloatingIpFromNodeAndDecreate").toString();
    }
 }
