@@ -141,7 +141,7 @@ public final class GoogleComputeEngineService extends BaseComputeService {
       // state, and the deleted nodes will never be returned.
       // In order to be able to clean up the resources associated to the deleted nodes, we have to retrieve
       // the details of the nodes before deleting them.
-      Set<? extends NodeMetadata> nodes = newHashSet(filter(listNodesDetailsMatching(all()), filter));
+      Set<? extends NodeMetadata> nodes = newHashSet((Set<? extends NodeMetadata>)filter(listNodesDetailsMatching(all()), filter));
       super.destroyNodesMatching(filter); // This returns an empty list (a list of null elements) in GCE, as the api does not return deleted nodes
       cleanUpIncidentalResourcesOfDeadNodes(nodes);
       return nodes;
