@@ -27,7 +27,7 @@
   </parent>
   <groupId>org.apache.jclouds</groupId>
   <artifactId>jclouds-project</artifactId>
-  <version>2.0.2-ARCHIVA</version>
+  <version>2.0.4-ARCHIVA</version>
   <packaging>pom</packaging>
   <name>Apache jclouds Project</name>
   <url>http://jclouds.apache.org/</url>
@@ -87,36 +87,33 @@
 
   <repositories>
     <repository>
-      <id>apache-snapshots</id>
-      <url>https://repository.apache.org/content/repositories/snapshots</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
+      <id>central</id>
+      <name>sourcecode.c.mailarchiva-compute.internal-releases</name>
+      <url>http://maven.mailarchiva.org/artifactory/libs-release</url>
     </repository>
   </repositories>
 
   <!-- to allow downstream projects to access jclouds-resources in plugin config -->
-  <pluginRepositories>
-    <pluginRepository>
-      <id>apache-snapshots</id>
-      <url>https://repository.apache.org/content/repositories/snapshots</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
+
+  <!--<distributionManagement>-->
+    <!--<site>-->
+      <!--<id>central</id>-->
+      <!--<name>sourcecode.c.mailarchiva-compute.internal-releases</name>-->
+      <!--<url>http://maven.mailarchiva.org/artifactory/libs-release</url>-->
+    <!--</site>-->
+  <!--</distributionManagement>-->
 
   <distributionManagement>
-    <site>
-      <id>jclouds-github-pages-site</id>
-      <url>${maven.site.url.base}/${project.version}</url>
-    </site>
+    <repository>
+      <id>central</id>
+      <name>sourcecode.c.mailarchiva-compute.internal-releases</name>
+      <url>http://maven.mailarchiva.org/artifactory/libs-release</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>sourcecode.c.mailarchiva-compute.internal-snapshots</name>
+      <url>http://maven.mailarchiva.org/artifactory/libs-snapshot</url>
+    </snapshotRepository>
   </distributionManagement>
 
   <developers>
@@ -1303,8 +1300,9 @@
       <!-- Maven generates incorrect links without the <site> declaration here -->
       <distributionManagement>
         <site>
-          <id>jclouds-github-pages-site</id>
-          <url>${maven.site.url.base}/${project.version}/${project.artifactId}</url>
+          <id>central</id>
+          <name>sourcecode.c.mailarchiva-compute.internal-releases</name>
+          <url>http://maven.mailarchiva.org/artifactory/libs-release</url>
         </site>
       </distributionManagement>
       <build>

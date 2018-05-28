@@ -22,13 +22,13 @@
   <parent>
     <groupId>org.apache.jclouds</groupId>
     <artifactId>jclouds-project</artifactId>
-    <version>2.0.2-ARCHIVA</version>
+    <version>2.0.4-ARCHIVA</version>
     <relativePath>../../project/pom.xml</relativePath>
   </parent>
   
   <groupId>org.apache.jclouds.api</groupId>
   <artifactId>rackspace-cloudfiles</artifactId>
-  <version>2.0.2-ARCHIVA</version>
+  <version>2.0.4-ARCHIVA</version>
   <name>jclouds rackspace-cloudfiles api</name>
   <description>jclouds components to access Rackspace Cloud Files</description>
   <packaging>bundle</packaging>
